@@ -1,0 +1,50 @@
+/* Base Soil Page Styling */
+.soil-page {
+  background-color: #000;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 🔁 Video Background Styling */
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.25;  /* Use decimal not number */
+  pointer-events: none;
+}
+
+/* 🎞️ Text Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+/* 🎨 Font */
+.font-rain {
+  font-family: 'Georgia', cursive;
+  color: black;
+}
+
+/* Optional rainfall div (if needed later) */
+.rainfall-section {
+  background: black;
+}
+
+/* 🎨 Global text overrides for soil info section */
+.soil-info-section h2,
+.soil-info-section li {
+  color: black;
+  font-family: 'Georgia', cursive, serif;
+  font-style: italic;
+  font-weight: 600;
+}
+
+
+
