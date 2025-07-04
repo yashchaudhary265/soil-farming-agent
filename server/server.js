@@ -11,8 +11,8 @@ const app = express();
 // ✅ CORS Middleware
 app.use(cors({
   origin: [
-    'https://soil-farming-agent-one.vercel.app',
-    'https://soil-farming-agent-d87pq42d9-interactive-resumes-projects.vercel.app'
+    'https://soil-farming-agent-d87pq42d9-interactive-resumes-projects.vercel.app',
+    'https://soil-farming-agent-git-main-interactive-resumes-projects.vercel.app'
   ],
   credentials: true
 }));
