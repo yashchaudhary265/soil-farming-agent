@@ -4,11 +4,16 @@ const connectDB = require('./config/db');
 const authRoutes = require('./routes/auth');
 const cors = require('cors');
 const adminRoutes = require('./routes/admin');
-
+onst app = express();
 
 dotenv.config();
 
 const app = express();
+
+// middlewares
+app.use(express.json());
+const authRoutes = require("./routes/auth"); // path to your auth route file
+app.use("/api", authRoutes); // route prefix must match
 
 // ✅ CORS Middleware (Restrict to frontend origin)
 app.use(cors({
