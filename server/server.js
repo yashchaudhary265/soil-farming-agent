@@ -10,7 +10,7 @@ const app = express();
 
 // ✅ CORS Middleware
 app.use(cors({
-  origin: 'http://localhost:3000', // Change to your Vercel frontend URL on deployment
+  origin: 'https://soil-farming-agent-one.vercel.app/', // Change to your Vercel frontend URL on deployment
   credentials: true
 }));
 
