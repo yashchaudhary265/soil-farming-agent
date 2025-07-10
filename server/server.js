@@ -4,6 +4,7 @@ const connectDB = require('./config/db');
 const authRoutes = require('./routes/auth');
 const cors = require('cors');
 const adminRoutes = require('./routes/admin');
+const distributorRoutes = require('./routes/distributors'); // ✅ Add this line
 
 dotenv.config();
 const app = express();
@@ -40,6 +41,7 @@ app.use((req, res, next) => {
 // ✅ Main API routes
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/distributors', distributorRoutes); // ✅ Add this line
 
 // ✅ Root route for testing
 app.get('/', (req, res) => {
@@ -48,7 +50,8 @@ app.get('/', (req, res) => {
     timestamp: new Date().toISOString(),
     endpoints: {
       auth: '/api/auth',
-      admin: '/api/admin'
+      admin: '/api/admin',
+      distributors: '/api/distributors' // ✅ Add this line
     }
   });
 });
