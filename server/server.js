@@ -8,15 +8,22 @@ const adminRoutes = require('./routes/admin');
 dotenv.config();
 const app = express();
 
-// ✅ CORS Middleware
+// ✅ CORS Middleware with correct frontend URL
 app.use(cors({
   origin: [
+    'https://soil-farming-agent-one.vercel.app', // ✅ Your actual frontend URL
     'https://soil-farming-agent-d87pq42d9-interactive-resumes-projects.vercel.app',
-    'https://soil-farming-agent-git-main-interactive-resumes-projects.vercel.app'
+    'https://soil-farming-agent-git-main-interactive-resumes-projects.vercel.app',
+    'http://localhost:3000', // For local development
+    'http://localhost:3001'  // Alternative local port
   ],
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 }));
 
+// ✅ Handle preflight requests
+app.options('*', cors());
 
 // ✅ Body Parser
 app.use(express.json());
@@ -26,13 +33,33 @@ connectDB();
 
 // ✅ Log all incoming requests
 app.use((req, res, next) => {
-  console.log(`🌀 ${req.method} ${req.url}`);
+  console.log(`🌀 ${req.method} ${req.url} - Origin: ${req.headers.origin}`);
   next();
 });
 
 // ✅ Main API routes
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
+
+// ✅ Root route for testing
+app.get('/', (req, res) => {
+  res.json({ 
+    message: '🌱 Soil Farming Agent API is running!',
+    timestamp: new Date().toISOString(),
+    endpoints: {
+      auth: '/api/auth',
+      admin: '/api/admin'
+    }
+  });
+});
+
+// ✅ Health check route
+app.get('/health', (req, res) => {
+  res.json({ 
+    status: 'healthy',
+    timestamp: new Date().toISOString()
+  });
+});
 
 // ✅ 404 Handler
 app.use((req, res) => {
