@@ -89,39 +89,6 @@ soil-farming-agent/
 - MongoDB (local or Atlas)
 - Git
 
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yashchaudhary265/soil-farming-agent.git
-   cd soil-farming-agent
-   ```
-
-2. **Setup Backend**
-   ```bash
-   cd server
-   npm install
-   ```
-
-3. **Setup Frontend**
-   ```bash
-   cd ../client
-   npm install
-   ```
-
-### Environment Variables
-
-#### Backend (.env in server/)
-```env
-MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/test?retryWrites=true&w=majority
-PORT=5000
-NODE_ENV=development
-```
-
-#### Frontend (.env in client/)
-```env
-REACT_APP_API_URL=http://localhost:5000
-```
 
 ### Running the Application
 
